@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using P137Pronia.DataAccess;
 using P137Pronia.ExtensionServices.Implements;
 using P137Pronia.ExtensionServices.Interfaces;
+using P137Pronia.Services;
 using P137Pronia.Services.Implements;
 using P137Pronia.Services.Interfaces;
 
@@ -20,6 +21,7 @@ namespace P137Pronia
             builder.Services.AddScoped<ISliderService, SliderService>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<LayoutService>();
 
 			builder.Services.AddDbContext<ProniaDbContext>(opt =>
             {

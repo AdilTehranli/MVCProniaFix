@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zmogwoOF993zcPifdl5TOW0mDsq2yE/mebJGRcDROCk=",
+  "Hash": "jfBZKQtd9UovlsRV6mdqivqXBqJ3UjjR9Lelak/A1Hc=",
   "Source": "P137Pronia",
   "BasePath": "_content/P137Pronia",
   "Mode": "Default",
@@ -34627,6 +34627,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\imgs\\products\\5b281b34-5375-4cd1-b7d4-598f0d56f045.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\mvx\\P137Pronia\\P137Pronia\\wwwroot\\assets\\imgs\\products\\62db544c-85f9-4410-810e-c4e9ce3f717e.jpg",
+      "SourceId": "P137Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\mvx\\P137Pronia\\P137Pronia\\wwwroot\\",
+      "BasePath": "_content/P137Pronia",
+      "RelativePath": "assets/imgs/products/62db544c-85f9-4410-810e-c4e9ce3f717e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\imgs\\products\\62db544c-85f9-4410-810e-c4e9ce3f717e.jpg"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\mvx\\P137Pronia\\P137Pronia\\wwwroot\\assets\\imgs\\products\\70648798-1db8-4fd6-a60c-5c91ac2d113b.webp",

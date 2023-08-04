@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch.Internal;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using P137Pronia.DataAccess;
@@ -34,4 +35,5 @@ public class HomeController : Controller
     {
         return PartialView("_ProductPartial",await _productService.GetTable.Skip(skip).Take(take).ToListAsync());
     }
+  
 }

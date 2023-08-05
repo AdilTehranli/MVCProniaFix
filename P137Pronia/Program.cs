@@ -17,11 +17,7 @@ namespace P137Pronia
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddScoped<IFileService, FileService>();
-            builder.Services.AddScoped<ISliderService, SliderService>();
-            builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
-            builder.Services.AddScoped<LayoutService>();
+            builder.Services.AddService();
 
 			builder.Services.AddDbContext<ProniaDbContext>(opt =>
             {

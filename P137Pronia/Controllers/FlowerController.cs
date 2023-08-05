@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using P137Pronia.DataAccess;
 using P137Pronia.Models;
 using P137Pronia.Services.Interfaces;
 using P137Pronia.ViewModels.ProductVMs;
-
-namespace P137Pronia.Controllers;
 
 public class FlowerController : Controller
 {
@@ -38,5 +38,12 @@ public class FlowerController : Controller
         var entity = await _service.GetTable.Include(p => p.ProductImages).SingleOrDefaultAsync(p => p.Id == id && p.IsDeleted == false);
         if (entity == null) return NotFound();
         return View(entity);
+    }
+    [HttpPost]
+    public async Task<IActionResult> Filter(FilterVM vM)
+    {
+        var model = _context.Products.Include(p => p.ProductCategories).ThenInclude(p => p.Category);
+        var result = model.Where(p => p.Name.Contains(vM.Search) && p.ProductCategories.Any(pc => pc.CategoryId == vM.CategoryId));
+        return Json(result);
     }
 }

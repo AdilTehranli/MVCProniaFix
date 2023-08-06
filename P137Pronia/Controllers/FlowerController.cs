@@ -42,8 +42,22 @@ public class FlowerController : Controller
     [HttpPost]
     public async Task<IActionResult> Filter(FilterVM vM)
     {
+        if(vM.MinPrice>vM.MaxPrice)return BadRequest();
+        if (String.IsNullOrEmpty(vM.Search))
+        {
+            vM.Search = "";
+        }
         var model = _context.Products.Include(p => p.ProductCategories).ThenInclude(p => p.Category);
-        var result = model.Where(p => p.Name.Contains(vM.Search) && p.ProductCategories.Any(pc => pc.CategoryId == vM.CategoryId));
-        return Json(result);
+        var result = model.Where(p => p.Name.Contains(vM.Search));
+        if(vM.CategoryId > 0)
+        {
+            result=result.Where(p=>p.ProductCategories.Any(pc=>pc.CategoryId == vM.CategoryId));
+        }
+        if(vM.MaxPrice != 0)
+        {
+            result = result.Where(p => p.Price <= vM.MaxPrice && p.Price >= vM.MinPrice);
+
+        }
+        return PartialView("_ProductFilterPartial",result);
     }
 }

@@ -39,17 +39,17 @@
                                 <h2 class="widgets-title mb-4">Categories</h2>
                                 <ul class="widgets-category">
                                     <li>
-                                        <a href="#">
-                                            <input type="radio" value="0" name="CategoryId"/>
+                                        <input type="radio" id="cat-0" class="d-none" value="0" name="CategoryId" />
+                                        <label for="cat-0">
                                             <i class="fa fa-chevron-right"></i>
                                          All <span>(@Model.ProductCount)</span>
-                                        </a>
+                                        </label>
                                     </li>
                                     @foreach (var item in Model.Categories)
                                     {
                                         
                                     <li>
-                                        <input id="cat- @item.Id" type="radio" value="@item.Id" name="CategoryId" />
+                                        <input id="cat- @item.Id" type="radio" class="d-none" value="@item.Id" name="CategoryId" />
                                             <label for="cat- @item.Id">
                                             <i class="fa fa-chevron-right"></i>
                                             @item.Name <span>(@item.ProductCategories.Count)</span>
@@ -1120,3 +1120,29 @@
 </main>
 <!-- Main Content Area End Here -->
 <!-- Begin Footer Area -->
+@section scripts{
+    <script>
+        $(".widgets-area").on("submit",function (event){
+            event.preventdefault();
+            var datas = $(this).serialize();
+            var action = $(this).attr('action');
+            $.ajax({
+                type : "POST",
+                url : action,
+                data : datas,
+                dataType : "json",
+                succsess:function (data){
+                    console.log(data.responseText)
+                },
+                error:function (e){
+                    if(e.responseText.trim().length>0){
+                        $(".products").html(e.responseText)
+                    }
+                    else{
+                        $("products").html("<h2>not found products</h2>")
+                    }
+                }
+            })
+        })
+    </script>
+}

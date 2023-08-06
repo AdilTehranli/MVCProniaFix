@@ -3,6 +3,9 @@
     ViewData["Title"] = "Index";
 }
 @model HomeVM
+@section styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+}
 <!-- Begin Slider Area -->
 <input type="hidden" value="@ViewBag.ProductCount" id="prodCount">
 <div class="slider-area">
@@ -801,4 +804,20 @@
             
         })
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    let prods = document.querySelectorAll(".feat-prod  .pe-7s-look ");
+    prods.forEach(prod => {
+        prod.addEventListener("click", e => {
+            e.preventDefault();
+            fetch(e.target.parentElement.href)
+                .then(res => {
+                    if (res = ok) {
+                        alert()
+                    }
+                })
+                .catch(err => console.log(err))
+        })
+    })
+</script>
 }

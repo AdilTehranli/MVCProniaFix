@@ -18,6 +18,7 @@ namespace P137Pronia
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddService();
+            builder.Services.AddSession();
 
 			builder.Services.AddDbContext<ProniaDbContext>(opt =>
             {
@@ -41,7 +42,7 @@ namespace P137Pronia
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

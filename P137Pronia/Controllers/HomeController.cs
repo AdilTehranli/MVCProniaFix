@@ -71,6 +71,7 @@ public class HomeController : Controller
                 Id = (int)id,
                 Count = 1
             };
+            items.Add(item); 
         }
         else
         {
@@ -83,8 +84,18 @@ public class HomeController : Controller
         return Ok();
     }
 
-    public IActionResult GetBasket()
+    public async Task<IActionResult>  GetBasket()
     {
-        return Json(JsonConvert.DeserializeObject<List<BasketItemVM>>(HttpContext.Request.Cookies["basket"]));
+        var basket = JsonConvert.DeserializeObject<List<BasketItemVM>>(HttpContext.Request.Cookies["basket"]);
+        List<BasketItemProductVM> vm = new List<BasketItemProductVM>();
+        foreach (var item in basket)
+        {
+            vm.Add(new BasketItemProductVM
+            {
+                Count = item.Count,
+                Product=await _productService.GetById(item.Id),
+            });
+        }
+        return PartialView("_BasketPartial",vm);
     }
 }

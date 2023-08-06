@@ -813,7 +813,31 @@
             fetch(e.target.parentElement.href)
                 .then(res => {
                     if (res = ok) {
-                        alert()
+                            let count = document.getElementById("basket"),innerText;
+
+                        document.getElementById("basket").innerText=Number(count)+1
+                        document.querySelector(".quantity .asd").innerText=count;
+
+
+                            Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
                     }
                 })
                 .catch(err => console.log(err))

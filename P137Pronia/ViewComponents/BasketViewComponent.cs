@@ -25,7 +25,7 @@ namespace P137Pronia.ViewComponents
             }
             else
             {
-                items = new();
+               items = new();
             }
             List<BasketItemProductVM> products = new();
                 float sum = 0;

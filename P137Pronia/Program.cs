@@ -1,10 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using P137Pronia.DataAccess;
-using P137Pronia.ExtensionServices.Implements;
-using P137Pronia.ExtensionServices.Interfaces;
+using P137Pronia.Models;
 using P137Pronia.Services;
-using P137Pronia.Services.Implements;
-using P137Pronia.Services.Interfaces;
 
 namespace P137Pronia
 {
@@ -20,14 +18,22 @@ namespace P137Pronia
             builder.Services.AddService();
             builder.Services.AddSession();
 
-			builder.Services.AddDbContext<ProniaDbContext>(opt =>
+            builder.Services.AddDbContext<ProniaDbContext>(opt =>
             {
                 opt.UseSqlServer(builder.Configuration["ConnectionStrings:MSSQL"], opt =>
                 {
                     opt.EnableRetryOnFailure();
                 });
                 //opt.UseNpgsql();
-            });
+            }).AddIdentity<AppUser, IdentityRole>(opt =>
+            {
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 8;
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.SignIn.RequireConfirmedEmail = false;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<ProniaDbContext>();
             builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
@@ -40,7 +46,7 @@ namespace P137Pronia
             }
             if (app.Environment.IsProduction())
             {
-			    app.UseStatusCodePagesWithRedirects("~/error.html");
+                app.UseStatusCodePagesWithRedirects("~/error.html");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

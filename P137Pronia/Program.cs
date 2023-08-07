@@ -22,9 +22,13 @@ namespace P137Pronia
 
 			builder.Services.AddDbContext<ProniaDbContext>(opt =>
             {
-                opt.UseSqlServer(builder.Configuration["ConnectionStrings:MSSQL"]);
+                opt.UseSqlServer(builder.Configuration["ConnectionStrings:MSSQL"], opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
                 //opt.UseNpgsql();
             });
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 

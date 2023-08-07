@@ -508,3 +508,8 @@ C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\obj\Debug\net6.0\refint\P137Pron
 C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\obj\Debug\net6.0\P137Pronia.pdb
 C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\obj\Debug\net6.0\P137Pronia.genruntimeconfig.cache
 C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\obj\Debug\net6.0\ref\P137Pronia.dll
+C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\User\Desktop\mvx\P137Pronia\P137Pronia\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

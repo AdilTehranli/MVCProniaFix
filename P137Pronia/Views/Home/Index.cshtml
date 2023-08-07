@@ -806,19 +806,17 @@
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
-    let prods = document.querySelectorAll(".feat-prod  .pe-7s-look ");
+    let prods = document.querySelectorAll(".feat-prod .pe-7s-look ");
     prods.forEach(prod => {
         prod.addEventListener("click", e => {
             e.preventDefault();
+            console.log(e.target)
             fetch(e.target.parentElement.href)
                 .then(res => {
-                    if (res = ok) {
+                    if (res.ok) {
                             let count = document.getElementById("basket"),innerText;
-
-                        document.getElementById("basket").innerText=Number(count)+1
+                        document.getElementById("basket").innerText=++count
                         document.querySelector(".quantity .asd").innerText=count;
-
-
                             Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
 
                             toastr.options = {

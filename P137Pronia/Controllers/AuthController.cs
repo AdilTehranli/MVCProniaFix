@@ -9,11 +9,13 @@ namespace P137Pronia.Controllers
     {
     readonly UserManager<AppUser> _userManager;
         readonly SignInManager<AppUser> _signInManager;
+        readonly RoleManager<IdentityRole> _roleManager;
 
-        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Register()
@@ -47,7 +49,7 @@ namespace P137Pronia.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginVM vm)
+        public async Task<IActionResult> Login(string? ReturnUrl,LoginVM vm)
         {
             if(!ModelState.IsValid) return BadRequest();
             var user = await _userManager.FindByNameAsync(vm.EmailOrUsername);
@@ -71,13 +73,27 @@ namespace P137Pronia.Controllers
                 ModelState.AddModelError("", "Email or Username wrong");
                 return View();
             }
+            if(ReturnUrl == null)
+            {
+
             return RedirectToAction("Index","Home");
+            }
+            else
+            {
+                return Redirect(ReturnUrl);
+            }
         }
         public async Task<IActionResult> SignOut()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Login));
         }
+        //public async Task CreateRoles()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Editor" });
 
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using P137Pronia.Extensions;
 using P137Pronia.Services.Interfaces;
 using P137Pronia.ViewModels.SliderVMs;
@@ -6,6 +7,8 @@ using P137Pronia.ViewModels.SliderVMs;
 namespace P137Pronia.Areas.Manage.Controllers
 {
     [Area("Manage")]
+    [Authorize]
+
     public class SliderController : Controller
     {
         private readonly ISliderService _service;

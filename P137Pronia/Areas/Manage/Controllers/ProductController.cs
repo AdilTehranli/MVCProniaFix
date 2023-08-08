@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using P137Pronia.Extensions;
@@ -8,7 +9,9 @@ using P137Pronia.ViewModels.ProductVMs;
 namespace P137Pronia.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	public class ProductController : Controller
+    [Authorize]
+
+    public class ProductController : Controller
 	{
 		readonly IProductService _service;
 		readonly ICategoryService _catService;

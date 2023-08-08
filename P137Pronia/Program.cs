@@ -35,6 +35,11 @@ namespace P137Pronia
                 opt.SignIn.RequireConfirmedEmail = false;
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<ProniaDbContext>();
             builder.Services.AddHttpContextAccessor();
+           builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Auth/Login";
+                options.AccessDeniedPath = "/Auth/AccessDenied";
+            });
 
             var app = builder.Build();
 

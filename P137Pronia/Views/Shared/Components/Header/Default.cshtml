@@ -82,7 +82,31 @@
                                                 <i class="pe-7s-search"></i>
                                             </a>
                                         </li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
                                         <li class="dropdown d-none d-lg-block">
+                                            <button class="btn btn-link dropdown-toggle ht-btn p-0"
+                                                    type="button"
+                                                    id="settingButton"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-label="setting"
+                                                    aria-expanded="false">
+                                                <i class="pe-7s-user"></i>
+                                            </button>
+                                            <ul class="dropdown-menu"
+                                                aria-labelledby="settingButton">
+                                                <li>
+                                                    <a class="dropdown-item" >@User.Identity.Name</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-action="SignOut" asp-controller="Auth"> SignOut</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                    <li class="dropdown d-none d-lg-block">
                                             <button class="btn btn-link dropdown-toggle ht-btn p-0"
                                                     type="button"
                                                     id="settingButton"
@@ -101,7 +125,9 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="d-none d-lg-block">
+                                        
+                                    }
+                                    <li class="d-none d-lg-block">
                                             <a href="wishlist.html">
                                                 <i class="pe-7s-like"></i>
                                             </a>

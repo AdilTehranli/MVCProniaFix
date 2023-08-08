@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Login";
 }
+@model LoginVM
 <main class="main-content">
     <div class="breadcrumb-area breadcrumb-height"
          data-bg-image="~/assets/images/breadcrumb/bg/1-1-1919x388.jpg">
@@ -14,7 +15,7 @@
                             <li>
                                 <a href="index.html">Home</a>
                             </li>
-                            <li>Login | Register</li>
+                            <li>Login</li>
                         </ul>
                     </div>
                 </div>
@@ -24,29 +25,33 @@
     <div class="login-register-area section-space-y-axis-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <form action="#">
+                <div class="col-lg-12">
+                    <form method="post">
                         <div class="login-form">
                             <h4 class="login-title">Login</h4>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label>Email Address*</label>
-                                    <input type="email" placeholder="Email Address" />
+                                    <label asp-for="EmailOrUsername">EmailOrUsernamee</label>
+                                    <input asp-for="EmailOrUsername" />
+                                    <span class="text-danger" asp-validation-for="EmailOrUsername"></span>
                                 </div>
                                 <div class="col-lg-12">
-                                    <label>Password</label>
-                                    <input type="password" placeholder="Password" />
+                                    <label asp-for="Password">Password</label>
+                                    <input asp-for="Password" />
+                                    <span class="text-danger" asp-validation-for="Password"></span>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="check-box">
-                                        <input type="checkbox" id="remember_me" />
-                                        <label for="remember_me">Remember me</label>
+                                        <label asp-for="RemmemberMe">RemmemberMe</label>
+                                        <input style="display:block" asp-for="RemmemberMe" type="checkbox" />
+                                        <span class="text-danger" asp-validation-for="RemmemberMe"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4 pt-1 mt-md-0">
                                     <div class="forgotton-password_info">
                                         <a href="#"> Forgotten pasward?</a>
                                     </div>
+                                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                 </div>
                                 <div class="col-lg-12 pt-5">
                                     <button class="btn btn-custom-size lg-size btn-pronia-primary">
@@ -61,4 +66,7 @@
         </div>
     </div>
 </main>
+@section scripts{
+    <partial name="_ValidationPartial">
+}
 

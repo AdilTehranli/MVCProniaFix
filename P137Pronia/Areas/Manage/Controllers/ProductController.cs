@@ -9,7 +9,8 @@ using P137Pronia.ViewModels.ProductVMs;
 namespace P137Pronia.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
+
 
     public class ProductController : Controller
 	{

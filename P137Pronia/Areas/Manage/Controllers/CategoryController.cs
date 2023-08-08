@@ -5,7 +5,7 @@ using P137Pronia.Services.Interfaces;
 namespace P137Pronia.Areas.Manage.Controllers;
 
 [Area("Manage")]
-[Authorize]
+[Authorize(Roles="Admin")]
 public class CategoryController : Controller
 {
     readonly ICategoryService _service;

@@ -7,7 +7,8 @@ using P137Pronia.ViewModels.SliderVMs;
 namespace P137Pronia.Areas.Manage.Controllers
 {
     [Area("Manage")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
+
 
     public class SliderController : Controller
     {

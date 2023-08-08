@@ -42,6 +42,15 @@ namespace P137Pronia.Controllers
                 }
             return View();
             }
+            var res = await _userManager.AddToRoleAsync(user, "Member");
+            if (!res.Succeeded)
+            {
+                foreach (var item in res.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+                return View();
+            }
                 return RedirectToAction(nameof(Login));
         }
         public IActionResult Login()

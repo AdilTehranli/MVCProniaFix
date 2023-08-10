@@ -30,6 +30,7 @@ namespace P137Pronia.Controllers
             {
                 FullName = vm.Name + " " + vm.Surname,
                 Email=vm.EmailAddress,
+
                 UserName=vm.Username
                 
             };
